@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.ActionManagement;
 using JetBrains.Application.DataContext;
 using JetBrains.ReSharper.Feature.Services;
 using JetBrains.ReSharper.Feature.Services.ContextNavigation;
@@ -10,6 +11,7 @@ using JetBrains.ReSharper.Feature.Services.Occurences;
 using JetBrains.ReSharper.Features.Common.Occurences.ExecutionHosting;
 using JetBrains.ReSharper.Features.Finding.FindImplementations;
 using JetBrains.ReSharper.Features.Finding.GoToImplementation;
+using JetBrains.ReSharper.Features.Finding.NavigateFromHere;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Resolve;
 using JetBrains.ReSharper.Psi.Util;
@@ -18,11 +20,39 @@ using DeclaredElementUtil = JetBrains.ReSharper.Feature.Services.ExternalSources
 
 namespace GenericNavigator
 {
+    [ActionHandler]
+    public class GenericReferenceAction : ContextNavigationActionBase<GenericReferenceProvider>
+    {
+
+    }
+
     [ContextNavigationProvider]
-    public class GenericReferenceProvider : GotoImplementationProvider
+    public class GenericReferenceProviderProxy : INavigateFromHereProvider
+    {
+        private readonly GenericReferenceProvider _genericReferenceProvider;
+
+        public GenericReferenceProviderProxy(IFeaturePartsContainer manager)
+        {
+            _genericReferenceProvider = new GenericReferenceProvider(manager);
+        }
+
+        public IEnumerable<ContextNavigation> CreateWorkflow(IDataContext dataContext)
+        {
+            //if (IsAvailable(dataContext))
+            yield return new ContextNavigation(
+                "ClassName",
+                "ClassNameNavigationAction",
+                NavigationActionGroup.Other,
+                () => _genericReferenceProvider.GetSearchesExecution(dataContext, null));
+        }
+    }
+
+    public class GenericReferenceProvider : GotoImplementationProvider 
     {
         public GenericReferenceProvider(IFeaturePartsContainer manager) : base(manager)
         {
+            //var provider = new GotoImplementationProvider(manager);
+            //manager.GetFeatureParts<GotoImplementationProvider>(x => false);
         }
 
         protected override void ShowResults(IDataContext context, INavigationExecutionHost host, SearchImplementationsRequest searchRequest,
