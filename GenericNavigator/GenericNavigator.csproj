@@ -52,7 +52,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GenericNagivation.cs" />
+    <Compile Include="GenericNavigation.cs" />
     <Compile Include="MultiSetComparer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
