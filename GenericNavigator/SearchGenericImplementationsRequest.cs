@@ -13,40 +13,42 @@ namespace GenericNavigator
 {
     public class SearchGenericImplementationsRequest : SearchImplementationsRequest
     {
-        private readonly IEnumerable<IDeclaredType> _typeParams;
+        private readonly IEnumerable<IDeclaredType> _originTypeParams;
 
         public SearchGenericImplementationsRequest(IDeclaredElement declaredElement, 
                                                    ITypeElement originType,
                                                    ISearchDomain searchDomain, 
-                                                   IEnumerable<IDeclaredType> typeParams) : base(declaredElement, originType, searchDomain)
+                                                   IEnumerable<IDeclaredType> originTypeParams) : base(declaredElement, originType, searchDomain)
         {
-            _typeParams = typeParams;
+            _originTypeParams = originTypeParams;
         }
 
         public override ICollection<IOccurence> Search(IProgressIndicator progressIndicator)
         {
             var occurences = base.Search(progressIndicator);
+
+            if (!_originTypeParams.Any())
+            {
+                return occurences;
+            }
+
             var genericOccurences = occurences.Where(x => IsEqualGeneric(x.GetDeclaredElement())).ToList();
             return genericOccurences.Any() ? genericOccurences : occurences;
         }
 
-        private bool IsEqualGeneric(IDeclaredElement y)
+        private bool IsEqualGeneric(IDeclaredElement element)
         {
-            if (!_typeParams.Any())
-            {
-                return true;
-            }
+            var elementSuperTypes = TypeElementUtil.GetAllSuperTypes(DeclaredElementUtil.GetTopLevelTypeElement(element as IClrDeclaredElement));
+            var elementSuperTypeParams = GetTypeParametersFromTypes(elementSuperTypes);
 
-            var ySuperTypes = TypeElementUtil.GetAllSuperTypes(DeclaredElementUtil.GetTopLevelTypeElement(y as IClrDeclaredElement));
-            var yTypeParams = GetTypeParametersFromTypes(ySuperTypes);
-
-            return yTypeParams.Any(yTypeParam => TypeCollectionsEqual(_typeParams, yTypeParam));
+            //return elementSuperTypeParams.Any(elementTypeParams => TypeCollectionsEqual(_originTypeParams, elementTypeParams));
+            return elementSuperTypeParams.Any(elementTypeParams => _originTypeParams.SequenceEqual(elementTypeParams.Reverse()));
         }
 
-        private static bool TypeCollectionsEqual(IEnumerable<IDeclaredType> typeParams, IEnumerable<IDeclaredType> types)
+        private static bool TypeCollectionsEqual(IEnumerable<IDeclaredType> left, IEnumerable<IDeclaredType> right)
         {
             var comparer = new MultiSetComparer<IDeclaredType>();
-            return comparer.Equals(typeParams, types);
+            return comparer.Equals(left, right);
         }
 
         private static IEnumerable<IEnumerable<IDeclaredType>> GetTypeParametersFromTypes(IEnumerable<IDeclaredType> types)
