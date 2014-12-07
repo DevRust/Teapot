@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace GenericNavigator
 {
@@ -10,26 +8,44 @@ namespace GenericNavigator
         public bool Equals(IEnumerable<T> first, IEnumerable<T> second)
         {
             if (first == null)
+            {
                 return second == null;
+            }
 
             if (second == null)
+            {
                 return false;
+            }
 
             if (ReferenceEquals(first, second))
+            {
                 return true;
+            }
 
             var firstCollection = first as ICollection<T>;
             var secondCollection = second as ICollection<T>;
-            if (firstCollection != null && secondCollection != null)
-            {
-                if (firstCollection.Count != secondCollection.Count)
-                    return false;
 
-                if (firstCollection.Count == 0)
-                    return true;
+            if (firstCollection == null || secondCollection == null)
+            {
+                return !HaveMismatchedElement(first, second);
+            }
+
+            if (firstCollection.Count != secondCollection.Count)
+            {
+                return false;
+            }
+
+            if (firstCollection.Count == 0)
+            {
+                return true;
             }
 
             return !HaveMismatchedElement(first, second);
+        }
+
+        public int GetHashCode(IEnumerable<T> enumerable)
+        {
+            return enumerable.OrderBy(x => x).Aggregate(17, (current, val) => current*23 + val.GetHashCode());
         }
 
         private static bool HaveMismatchedElement(IEnumerable<T> first, IEnumerable<T> second)
@@ -41,7 +57,9 @@ namespace GenericNavigator
             var secondElementCounts = GetElementCounts(second, out secondCount);
 
             if (firstCount != secondCount)
+            {
                 return true;
+            }
 
             foreach (var kvp in firstElementCounts)
             {
@@ -49,7 +67,9 @@ namespace GenericNavigator
                 secondElementCounts.TryGetValue(kvp.Key, out secondCount);
 
                 if (firstCount != secondCount)
+                {
                     return true;
+                }
             }
 
             return false;
@@ -60,7 +80,7 @@ namespace GenericNavigator
             var dictionary = new Dictionary<T, int>();
             nullCount = 0;
 
-            foreach (T element in enumerable)
+            foreach (var element in enumerable)
             {
                 if (element == null)
                 {
@@ -76,16 +96,6 @@ namespace GenericNavigator
             }
 
             return dictionary;
-        }
-
-        public int GetHashCode(IEnumerable<T> enumerable)
-        {
-            int hash = 17;
-
-            foreach (T val in enumerable.OrderBy(x => x))
-                hash = hash * 23 + val.GetHashCode();
-
-            return hash;
         }
     }
 }
