@@ -26,7 +26,8 @@ namespace GenericNavigator
         public override ICollection<IOccurence> Search(IProgressIndicator progressIndicator)
         {
             var occurences = base.Search(progressIndicator);
-            return occurences.Where(x => IsEqualGeneric(x.GetDeclaredElement())).ToList();
+            var genericOccurences = occurences.Where(x => IsEqualGeneric(x.GetDeclaredElement())).ToList();
+            return genericOccurences.Any() ? genericOccurences : occurences;
         }
 
         private bool IsEqualGeneric(IDeclaredElement y)
