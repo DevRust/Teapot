@@ -1,0 +1,6 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=CA6338D72F28364CA67006D0E2A98B72/AbsolutePath/@EntryValue">C:\dev\projects\GenericNavigator2\GenericNavigator\GenericNavigator.DotSettings</s:String>
+	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=CA6338D72F28364CA67006D0E2A98B72/RelativePath/@EntryValue">..\GenericNavigator.DotSettings</s:String>
+	<s:Boolean x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=CA6338D72F28364CA67006D0E2A98B72/@KeyIndexDefined">True</s:Boolean>
+	<s:Boolean x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=FileCA6338D72F28364CA67006D0E2A98B72/@KeyIndexDefined">True</s:Boolean>
+	<s:Double x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=FileCA6338D72F28364CA67006D0E2A98B72/RelativePriority/@EntryValue">1</s:Double></wpf:ResourceDictionary>
