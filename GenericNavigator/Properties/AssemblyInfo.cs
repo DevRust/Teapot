@@ -1,6 +1,4 @@
 ﻿using System.Reflection;
-using JetBrains.ActionManagement;
-using JetBrains.Application.PluginSupport;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
@@ -8,9 +6,9 @@ using JetBrains.Application.PluginSupport;
 [assembly: AssemblyTitle("GenericNavigator")]
 [assembly: AssemblyDescription("A navigation plugin that assists in navigating to implementations of generic types")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("George Kinsman")]
+[assembly: AssemblyCompany("George Kinsman, Emily Poole")]
 [assembly: AssemblyProduct("GenericNavigator")]
-[assembly: AssemblyCopyright("Copyright © George Kinsman, 2014")]
+[assembly: AssemblyCopyright("Copyright © George Kinsman, Emily Poole, 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
