@@ -1,16 +1,22 @@
 using System.Linq;
 using JetBrains.Application.DataContext;
-using JetBrains.ReSharper.Feature.Services.ContextNavigation.ContextSearches.BaseSearches;
-using JetBrains.ReSharper.Feature.Services.ContextNavigation.Util;
-using JetBrains.ReSharper.Feature.Services.Navigation.Search;
-using JetBrains.ReSharper.Feature.Services.Navigation.Search.SearchRequests;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.CSharp;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Resolve;
 using JetBrains.ReSharper.Psi.Resolve;
 using DataConstants = JetBrains.ReSharper.Psi.Services.DataConstants;
+using JetBrains.Application.ComponentModel;
+using JetBrains.ReSharper.Feature.Services.Navigation.ContextNavigation;
+using JetBrains.ReSharper.Feature.Services.Navigation.Requests;
+using JetBrains.Application.BuildScript.Application.Zones;
 
 namespace GenericNavigator {
+
+    [ZoneMarker]
+    public class ZoneMarker
+    {
+    }
+
     [ShellFeaturePart]
     public class GenericImplementationContextSearch : ImplementationContextSearch {
 

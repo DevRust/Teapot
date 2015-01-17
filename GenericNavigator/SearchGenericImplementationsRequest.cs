@@ -1,13 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Application.Progress;
-using JetBrains.ReSharper.Feature.Services.Navigation.Search;
-using JetBrains.ReSharper.Feature.Services.Navigation.Search.SearchRequests;
 using JetBrains.ReSharper.Feature.Services.Occurences;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Search;
 using JetBrains.ReSharper.Psi.Util;
 using DeclaredElementUtil = JetBrains.ReSharper.Feature.Services.ExternalSources.Utils.DeclaredElementUtil;
+using JetBrains.ReSharper.Feature.Services.Navigation.Requests;
 
 namespace GenericNavigator {
     public class SearchGenericImplementationsRequest : SearchImplementationsRequest {

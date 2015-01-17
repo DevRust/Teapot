@@ -14,10 +14,3 @@
 
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
-
-[assembly: ActionsXml("GenericNavigator.Actions.xml")]
-
-// The following information is displayed by ReSharper in the Plugins dialog
-[assembly: PluginTitle("Generic Navigator")]
-[assembly: PluginDescription("A navigation plugin that assists in navigating to implementations of generic types")]
-[assembly: PluginVendor("George Kinsman")]
