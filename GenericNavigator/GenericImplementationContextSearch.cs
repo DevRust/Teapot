@@ -8,15 +8,8 @@ using DataConstants = JetBrains.ReSharper.Psi.Services.DataConstants;
 using JetBrains.Application.ComponentModel;
 using JetBrains.ReSharper.Feature.Services.Navigation.ContextNavigation;
 using JetBrains.ReSharper.Feature.Services.Navigation.Requests;
-using JetBrains.Application.BuildScript.Application.Zones;
 
 namespace GenericNavigator {
-
-    [ZoneMarker]
-    public class ZoneMarker
-    {
-    }
-
     [ShellFeaturePart]
     public class GenericImplementationContextSearch : ImplementationContextSearch {
 

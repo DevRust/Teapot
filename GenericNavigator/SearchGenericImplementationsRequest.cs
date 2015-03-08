@@ -24,7 +24,7 @@ namespace GenericNavigator {
         public override ICollection<IOccurence> Search(IProgressIndicator progressIndicator) {
             var occurences = base.Search(progressIndicator);
 
-            if (!_originTypeParams.Any()) {
+            if (_originTypeParams == null || !_originTypeParams.Any()) {
                 return occurences;
             }
 
