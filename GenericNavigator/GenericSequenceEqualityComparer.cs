@@ -13,8 +13,9 @@ namespace GenericNavigator {
                                                 ? EqualityMode.MatchSuccess
                                                 : EqualityMode.MatchFail)).ToList();
 
-            return mappedSet.Any(result => result == EqualityMode.MatchSuccess) &&
-                   mappedSet.All(result => result != EqualityMode.MatchFail);
+            return (mappedSet.Any(result => result == EqualityMode.MatchSuccess) &&
+                    mappedSet.All(result => result != EqualityMode.MatchFail)) ||
+                   mappedSet.All(result => result == EqualityMode.OpenGeneric);
         }
 
         public int GetHashCode(IEnumerable<IDeclaredType> obj) {
