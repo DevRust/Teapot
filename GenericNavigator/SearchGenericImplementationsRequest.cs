@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Application.Progress;
+using JetBrains.ReSharper.Feature.Services.Navigation.ContextNavigation;
 using JetBrains.ReSharper.Feature.Services.Occurences;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Search;
@@ -13,7 +14,7 @@ namespace GenericNavigator {
 
         private readonly IEnumerable<IDeclaredType> _originTypeParams;
 
-        public SearchGenericImplementationsRequest(IDeclaredElement declaredElement,
+        public SearchGenericImplementationsRequest(DeclaredElementTypeUsageInfo declaredElement,
                                                    ITypeElement originType,
                                                    ISearchDomain searchDomain,
                                                    IEnumerable<IDeclaredType> originTypeParams)

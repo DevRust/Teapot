@@ -13,7 +13,7 @@ namespace GenericNavigator {
     [ShellFeaturePart]
     public class GenericImplementationContextSearch : ImplementationContextSearch {
 
-        public override bool IsAvailable(IDataContext dataContext) {
+        protected override bool IsAvailableInternal(IDataContext dataContext) {
             return true;
         }
 
@@ -21,24 +21,23 @@ namespace GenericNavigator {
             return ContextNavigationUtil.CheckDefaultApplicability<CSharpLanguage>(dataContext);
         }
 
-        protected override SearchImplementationsRequest CreateSearchRequest(IDataContext dataContext,
-                                                                            IDeclaredElement declaredElement,
-                                                                            IDeclaredElement initialTarget) {
+        protected override SearchImplementationsRequest CreateSearchRequest(IDataContext dataContext, DeclaredElementTypeUsageInfo element,
+                                                                            DeclaredElementTypeUsageInfo initialTarget) {
             var originTypeElement = GetOriginTypeElement(dataContext, initialTarget);
             var searchDomain = SearchDomainContextUtil.GetSearchDomainContext(dataContext)
                                                       .GetDefaultDomain().SearchDomain;
             var typeParams = TypeParameterUtil.GetTypeParametersFromContext(dataContext);
 
-            return new SearchGenericImplementationsRequest(declaredElement, originTypeElement, searchDomain, typeParams);
+            return new SearchGenericImplementationsRequest(element, originTypeElement, searchDomain, typeParams);
         }
 
-        private static ITypeElement GetOriginTypeElement(IDataContext dataContext, IDeclaredElement initialTarget) {
+        private static ITypeElement GetOriginTypeElement(IDataContext dataContext, DeclaredElementTypeUsageInfo initialTarget) {
             var data = dataContext.GetData(DataConstants.REFERENCES);
             if (data == null) {
                 return null;
             }
 
-            foreach (var current in data.OfType<IReferenceWithQualifier>()) {
+            foreach (var current in data.OfType<IQualifiableReference>()) {
                 if (!Equals(current.Resolve().DeclaredElement, initialTarget)) {
                     continue;
                 }
