@@ -1,0 +1,1 @@
+Powershell.exe -file build.ps1
