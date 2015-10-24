@@ -166,7 +166,10 @@
     <Compile Include="GenericImplementationContextSearch.cs" />
     <Compile Include="GenericSequenceEqualityComparer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GenericFindUsagesContextSearch.cs" />
+    <Compile Include="RequestUtil.cs" />
     <Compile Include="SearchGenericImplementationsRequest.cs" />
+    <Compile Include="SearchGenericUsagesRequest.cs" />
     <Compile Include="TypeParameterUtil.cs" />
     <Compile Include="ZoneMarker.cs" />
   </ItemGroup>

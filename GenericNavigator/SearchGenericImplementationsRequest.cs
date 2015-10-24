@@ -2,12 +2,12 @@ using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Application.Progress;
 using JetBrains.ReSharper.Feature.Services.Navigation.ContextNavigation;
+using JetBrains.ReSharper.Feature.Services.Navigation.Requests;
 using JetBrains.ReSharper.Feature.Services.Occurences;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Search;
 using JetBrains.ReSharper.Psi.Util;
 using DeclaredElementUtil = JetBrains.ReSharper.Feature.Services.ExternalSources.Utils.DeclaredElementUtil;
-using JetBrains.ReSharper.Feature.Services.Navigation.Requests;
 
 namespace GenericNavigator {
     public class SearchGenericImplementationsRequest : SearchImplementationsRequest {
@@ -29,11 +29,12 @@ namespace GenericNavigator {
                 return occurences;
             }
 
-            var genericOccurences = occurences.Where(x => IsEqualGeneric(x.GetDeclaredElement())).ToList();
+            var genericOccurences = occurences.Where(IsEqualGeneric).ToList();
             return genericOccurences;
         }
 
-        private bool IsEqualGeneric(IDeclaredElement element) {
+        private bool IsEqualGeneric(IOccurence occurence) {
+            var element = occurence.GetDeclaredElement();
             var topLevelTypeElement = DeclaredElementUtil.GetTopLevelTypeElement(element as IClrDeclaredElement);
             var elementSuperTypes = TypeElementUtil.GetAllSuperTypesReversed(topLevelTypeElement);
             var elementSuperTypeParams = GetTypeParametersFromTypes(elementSuperTypes).Where(x => x.Any());
@@ -41,10 +42,8 @@ namespace GenericNavigator {
             return new GenericSequenceEqualityComparer().Equals(elementSuperTypeParams.First(), _originTypeParams);
         }
 
-        private static IEnumerable<IEnumerable<IDeclaredType>> GetTypeParametersFromTypes(
-            IEnumerable<IDeclaredType> types) {
+        private static IEnumerable<IEnumerable<IDeclaredType>> GetTypeParametersFromTypes(IEnumerable<IDeclaredType> types) {
             return types.Select(x => TypeParameterUtil.GetResolvedTypeParams(x.Resolve()));
         }
-
     }
 }

@@ -19,7 +19,16 @@ namespace GenericNavigator {
         protected override SearchImplementationsRequest CreateSearchRequest(IDataContext dataContext,
                                                                             DeclaredElementTypeUsageInfo element,
                                                                             DeclaredElementTypeUsageInfo initialTarget) {
+<<<<<<< Updated upstream
+            var originTypeElement = TypeParameterUtil.GetOriginTypeElement(dataContext, initialTarget);
+            var searchDomain = SearchDomainContextUtil.GetSearchDomainContext(dataContext)
+                                                      .GetDefaultDomain().SearchDomain;
+            var typeParams = TypeParameterUtil.GetTypeParametersFromContext(dataContext);
+
+            return new SearchGenericImplementationsRequest(element, originTypeElement, searchDomain, typeParams);
+=======
             return RequestUtil.CreateRequest(dataContext, element, initialTarget);
+>>>>>>> Stashed changes
         }
     }
 }
