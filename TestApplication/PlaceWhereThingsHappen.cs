@@ -11,7 +11,9 @@ namespace TestApplication
 
         private IGenericInterface<T, T1> thing4;
 
-        private IGenericInterface<T, int> thing5; 
+        private IGenericInterface<T, int> thing5;
+
+        private IInterface anotherThingEntirely;
 
         public void thing() 
         {
@@ -20,7 +22,11 @@ namespace TestApplication
             thing3.Method("", 1);
             thing4.Method(default(T), default(T1));
             moreThing.Method(1, 2L);
-        }
+            anotherThingEntirely.Method("", 1);
 
+            thing3.Method("", 2);
+            thing3.Method("", 3);
+            anotherThingEntirely.Method("", 1);
+        }
     }
 }

@@ -11,6 +11,11 @@ namespace TestApplication
         void Method(T1 t1, T2 t2);
     }
 
+    public interface IInterface
+    {
+        void Method(string t1, int t2);
+    }
+
     public class Instance1 : IGenericInterface<int, string>
     {
         public void Method(int t1, string t2)
@@ -49,6 +54,14 @@ namespace TestApplication
     public class Instance6<T1, T2> : IGenericInterface<T1, T2>
     {
         public void Method(T1 t1, T2 t2)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class Instance7 : IInterface
+    {
+        public void Method(string t1, int t2)
         {
             throw new NotImplementedException();
         }
