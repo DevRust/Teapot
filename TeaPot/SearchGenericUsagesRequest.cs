@@ -1,18 +1,12 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Application.Progress;
-using JetBrains.ReSharper.Feature.Services.Navigation;
 using JetBrains.ReSharper.Feature.Services.Navigation.Requests;
 using JetBrains.ReSharper.Feature.Services.Occurences;
-using JetBrains.ReSharper.Feature.Services.Occurences.OccurenceInformation;
 using JetBrains.ReSharper.Psi;
-using JetBrains.ReSharper.Psi.Modules;
 using JetBrains.ReSharper.Psi.Search;
-using JetBrains.ReSharper.Psi.Util;
-using DeclaredElementUtil = JetBrains.ReSharper.Feature.Services.ExternalSources.Utils.DeclaredElementUtil;
 
-namespace GenericNavigator {
+namespace TeaPot {
     public class SearchGenericUsagesRequest : SearchDeclaredElementUsagesRequest
     {
         private readonly IEnumerable<IDeclaredType> _originTypeParams;

@@ -4,7 +4,7 @@ using JetBrains.ReSharper.Feature.Services.Navigation.ContextNavigation;
 using JetBrains.ReSharper.Feature.Services.Navigation.Requests;
 using JetBrains.ReSharper.Psi.CSharp;
 
-namespace GenericNavigator {
+namespace TeaPot {
     [ShellFeaturePart]
     public class GenericImplementationContextSearch : ImplementationContextSearch {
 

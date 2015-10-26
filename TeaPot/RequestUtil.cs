@@ -1,11 +1,10 @@
-using System;
 using System.Collections.Generic;
 using JetBrains.Application.DataContext;
 using JetBrains.ReSharper.Feature.Services.Navigation.ContextNavigation;
 using JetBrains.ReSharper.Feature.Services.Navigation.Requests;
 using JetBrains.ReSharper.Psi;
 
-namespace GenericNavigator {
+namespace TeaPot {
     static internal class RequestUtil {
 
         public static SearchImplementationsRequest CreateRequest(IDataContext dataContext, 

@@ -9,7 +9,7 @@ using JetBrains.ReSharper.Psi.Search;
 using JetBrains.ReSharper.Psi.Util;
 using DeclaredElementUtil = JetBrains.ReSharper.Feature.Services.ExternalSources.Utils.DeclaredElementUtil;
 
-namespace GenericNavigator {
+namespace TeaPot {
     public class SearchGenericImplementationsRequest : SearchImplementationsRequest {
 
         private readonly IEnumerable<IDeclaredType> _originTypeParams;

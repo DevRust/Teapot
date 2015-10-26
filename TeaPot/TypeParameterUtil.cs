@@ -7,7 +7,7 @@ using JetBrains.ReSharper.Psi.ExtensionsAPI.Resolve;
 using JetBrains.ReSharper.Psi.Resolve;
 using DataConstants = JetBrains.ReSharper.Psi.Services.DataConstants;
 
-namespace GenericNavigator {
+namespace TeaPot {
     public static class TypeParameterUtil {
 
         public static IEnumerable<IDeclaredType> GetResolvedTypeParams(IResolveResult resolution) {

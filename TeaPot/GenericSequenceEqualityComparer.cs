@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using JetBrains.ReSharper.Psi;
 
-namespace GenericNavigator {
+namespace TeaPot {
     public class GenericSequenceEqualityComparer : IEqualityComparer<IEnumerable<IDeclaredType>> {
 
         public bool Equals(IEnumerable<IDeclaredType> x, IEnumerable<IDeclaredType> y) {
