@@ -1,6 +1,6 @@
 properties {
 	$BaseDir = Resolve-Path "..\"
-	$SolutionFile = "$BaseDir\GenericNavigator.sln"
+	$SolutionFile = "$BaseDir\TeaPot.sln"
 	$Nuspec = "$BaseDir\TeaPot.nuspec"
 }
 

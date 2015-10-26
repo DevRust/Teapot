@@ -8,8 +8,8 @@
     <ProjectGuid>{62ACF077-162C-4E67-8D53-82964B9B3281}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GenericNavigator</RootNamespace>
-    <AssemblyName>GenericNavigator</AssemblyName>
+    <RootNamespace>TeaPot</RootNamespace>
+    <AssemblyName>TeaPot</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
