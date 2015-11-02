@@ -1,4 +1,5 @@
 using System;
+using TestApplication.NeverClosedGenerics;
 
 namespace TestApplication
 {
@@ -27,6 +28,18 @@ namespace TestApplication
             thing3.Method("", 2);
             thing3.Method("", 3);
             anotherThingEntirely.Method("", 1);
+        }
+
+        public void NeverImplemented()
+        {
+            var opt = new Option<Guid>(Guid.NewGuid());
+            opt.Some();
+
+            var opt2 = new Option<bool>(true);
+            opt2.Some();
+
+            var opt3 = new Option<bool>(false);
+            opt3.Some();
         }
     }
 }
