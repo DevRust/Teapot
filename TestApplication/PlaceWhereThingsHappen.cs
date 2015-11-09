@@ -1,32 +1,35 @@
 using System;
+using TestApplication.Entities;
 using TestApplication.NeverClosedGenerics;
 
 namespace TestApplication
 {
     public class PlaceWhereThingsHappen<T, T1>
     {
-        private IGenericInterface<int, string> thing1;
-        private IGenericInterface<int, int> thing2;
-        private IGenericInterface<string, int> thing3;
-        private IGenericInterface<int, long> moreThing;
+        private IPot<Rosemary, Thyme> thing1;
+        private IPot<Basil, Thyme> thing2;
+        private IPot<Basil, Rosemary> moreThing;
+        private IPot<Chives, Basil> thing3;
 
-        private IGenericInterface<T, T1> thing4;
+        private IPot<T, T1> thing4;
 
-        private IGenericInterface<T, int> thing5;
+        private IPot<T, Basil> thing5;
 
         private IInterface anotherThingEntirely;
 
+        private IPot<T> teapot;
+
         public void thing() 
         {
-            thing1.Method(1, "");
-            thing2.Method(1, 1);
-            thing3.Method("", 1);
-            thing4.Method(default(T), default(T1));
-            moreThing.Method(1, 2L);
+            thing1.Add(new Rosemary(), new Thyme());
+            thing2.Add(new Basil(), new Thyme());
+            thing3.Add(new Chives(), new Basil());
+            thing4.Add(default(T), default(T1));
+            moreThing.Add(new Basil(), new Rosemary());
             anotherThingEntirely.Method("", 1);
 
-            thing3.Method("", 2);
-            thing3.Method("", 3);
+            thing3.Add(new Chives(), new Basil());
+            thing3.Add(new Chives(), new Basil());
             anotherThingEntirely.Method("", 1);
         }
 

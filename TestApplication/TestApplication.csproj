@@ -40,9 +40,32 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Entities\Basil.cs" />
+    <Compile Include="Entities\Beer.cs" />
+    <Compile Include="Entities\Chives.cs" />
+    <Compile Include="Entities\Coffee.cs" />
+    <Compile Include="Entities\Gold.cs" />
+    <Compile Include="Entities\Honey.cs" />
+    <Compile Include="Entities\MaryJane.cs" />
+    <Compile Include="Entities\Rosemary.cs" />
+    <Compile Include="Entities\Tea.cs" />
+    <Compile Include="Entities\Thyme.cs" />
+    <Compile Include="IInterface.cs" />
+    <Compile Include="Implementations\BasilAndBeerPlant.cs" />
+    <Compile Include="Implementations\BasilAndThymePlant.cs" />
+    <Compile Include="Implementations\BeerPot.cs" />
+    <Compile Include="Implementations\ChivesAndBasilPlant.cs" />
+    <Compile Include="Implementations\CoffeePot.cs" />
+    <Compile Include="Implementations\GoldPot.cs" />
+    <Compile Include="Implementations\HoneyPot.cs" />
+    <Compile Include="Implementations\PotPlant.cs" />
+    <Compile Include="Implementations\RosemaryAndThymePlant.cs" />
+    <Compile Include="Implementations\Teapot.cs" />
+    <Compile Include="IPot.cs" />
     <Compile Include="NeverClosedGenerics\Option.cs" />
     <Compile Include="PlaceWhereThingsHappen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimpleDemo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
